@@ -151,7 +151,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStartPre=/bin/sh -c '/usr/bin/ssh-keyscan -H ${GATEWAY_IP} > ${CONFIG_DIR}/known_hosts'
-ExecStart=/usr/bin/ssh -i ${CONFIG_DIR}/tunnel.key -N -R ${TUNNEL_PORT}:${DB_IP}:${DB_PORT} -o UserKnownHostsFile=${CONFIG_DIR}/known_hosts power_tunnel@${GATEWAY_IP}
+ExecStart=/usr/bin/ssh -i ${CONFIG_DIR}/tunnel.key -N -R ${TUNNEL_PORT}:${DB_IP}:${DB_PORT} -o UserKnownHostsFile=${CONFIG_DIR}/known_hosts -o ServerAliveInterval=60 -o ServerAliveCountMax=3 power_tunnel@${GATEWAY_IP}
 Restart=always
 RestartSec=60
 StartLimitInterval=0
