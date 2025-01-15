@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Configuration
-CLOUD_API_URL="http://34.208.100.62/register-tunnel"
+POWER_TUNNEL_GATEWAY=${POWER_TUNNEL_GATEWAY:-44.233.132.94}
+CLOUD_API_URL="http://${POWER_TUNNEL_GATEWAY}/register-tunnel"
 CONFIG_DIR="/etc/power-tunnel"
 SERVICE_NAME="power-tunnel"
 
